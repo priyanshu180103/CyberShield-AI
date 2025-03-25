@@ -38,9 +38,9 @@ def clean_text(text):
     return text.strip()
 
 # Load Model, Tokenizer, and Label Mapping
-MODEL_PATH = "C:/Users/PRIYANSHU/Desktop/Deep Learning Final Yr Project/backend/model/bilstm_model.h5"  # ✅ Update to local path
-TOKENIZER_PATH = "C:/Users/PRIYANSHU/Desktop/Deep Learning Final Yr Project/backend/model/tokenizer_bilstm.pkl"
-LABEL_MAPPING_PATH = "C:/Users/PRIYANSHU/Desktop/Deep Learning Final Yr Project/backend/model/label_mapping_bilstm.pkl"
+MODEL_PATH = "/backend/model/bilstm_model.h5"  # ✅ Update to local path
+TOKENIZER_PATH = "/backend/model/tokenizer_bilstm.pkl"
+LABEL_MAPPING_PATH = "/backend/model/label_mapping_bilstm.pkl"
 
 print("🔄 Loading model, tokenizer, and label mapping...")
 
