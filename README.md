@@ -1,8 +1,38 @@
 # CyberShield-AI
 
+# About the Project
+
 **CyberShield AI** is a cyberbullying detection web app that analyzes user-inputted text and instantly predicts whether it contains cyberbullying content. Built using a deep learning model **BiLSTM with Attention Layer**, the system provides accurate and real-time detection, helping users identify harmful interactions online. 
 
-**Tech Stack:**
+## Tech Stack 🍻
+<details>
+  <summary>Frontend</summary>
+  <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML">HTML</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript">JavaScript</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Backend</summary>
+  <ul>
+    <li><a href="https://flask.palletsprojects.com/en/stable/">Flask</a></li>
+    <li><a href="https://www.python.org/">Python</a></li>
+  </ul>
+</details>
+
+<details>
+<summary>Modules</summary>
+  <ul>
+    <li><a href="https://pandas.pydata.org/">pandas</a></li>
+    <li><a href="https://matplotlib.org/">matplotlib</a></li>
+    <li><a href="https://numpy.org/"></a>numpy</li>
+    <li><a href="https://www.tensorflow.org/">tensorflow</a></li>
+    <li><a href="https://www.nltk.org/">NLTK</a></li>
+  </ul>
+</details>
+
 
 
 
