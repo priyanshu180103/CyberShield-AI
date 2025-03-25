@@ -37,8 +37,9 @@
 
 
 # Preview
+![Screenshot 2025-03-25 224206](https://github.com/user-attachments/assets/4c08a096-7053-4151-bffc-16f9985e52e3)
 
-![Screenshot 2025-03-25 211428](https://github.com/user-attachments/assets/7b79f9c5-afad-46cd-bf6d-5021a051dd3f)
+
 
 
 ![Screenshot 2025-03-25 214053](https://github.com/user-attachments/assets/20a4a376-ab02-4f90-aa90-42928c4bce9c)
