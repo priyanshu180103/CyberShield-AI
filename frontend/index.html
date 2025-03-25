@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield AI</title>
+    <link rel="shortcut icon" href="LOGO.png" type="image/svg+xml">
+    <style>
+       
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: color 0.5s ease-in-out;
+            background: url('/frontend/CYBER2.webp') no-repeat center center/cover;
+            color: white;
+        }
+
+       
+        body.dark-mode {
+            background: #1e1e1e url('/frontend/CYBER6.webp') no-repeat center center/cover;
+            color: whitesmoke;
+        }
+
+       
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            width: 80%;
+            max-width: 400px;
+            transition: background 0.5s ease-in-out, transform 0.3s ease-in-out;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        
+        .cyberbullying-container {
+            background: rgba(231, 76, 60, 0.8) !important;
+        }
+
+        
+        .safe-container {
+            background: rgba(46, 204, 113, 0.8) !important;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            outline: none;
+            text-align: center;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        input:focus {
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        button {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s ease-in-out;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #27ae60;
+            transform: scale(1.05);
+        }
+
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            transition: background 0.5s, color 0.5s, transform 0.3s ease-in-out;
+        }
+
+        .info-button, .help-button, .aboutus-button{
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .info-button:hover, .help-button:hover, .aboutus-button:hover{
+            background: #2980b9;
+        }
+
+        .info-box, .help-box, .about-us{
+            position: fixed;
+            bottom: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: bottom 0.5s ease-in-out;
+            text-align: left;
+        }
+
+        
+        .info-box.show, .help-box.show, .about-us.show{
+            bottom: 20px;
+        }
+
+       
+        .close-info, .close-help, .close-aboutus{
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            float: right;
+        }
+        
+        .toggle-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .toggle-button {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-button:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+    </style>
+    <script>
+        async function checkText() {
+            const text = document.getElementById("inputText").value;
+            const resultElement = document.getElementById("result");
+            const container = document.querySelector(".container");
+
+            if (!text) {
+                alert("Please enter a sentence.");
+                return;
+            }
+
+            try {
+                const response = await fetch("http://127.0.0.1:5000/predict", {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ text })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+
+                const result = await response.json();
+                resultElement.innerText = "Prediction: " + result.prediction;
+
+                container.classList.remove("cyberbullying-container", "safe-container");
+
+                const cyberbullyingCategories = ["cyberbullying", "religion", "ethnicity", "age", "other_cyberbullying","gender"];
+
+                if (cyberbullyingCategories.includes(result.prediction.toLowerCase())) {
+                    container.classList.add("cyberbullying-container");
+                } else {
+                    container.classList.add("safe-container");
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Failed to fetch data from the server. Check console for details.");
+            }
+        }
+
+        function toggleInfo() {
+            document.getElementById("infoBox").classList.toggle("show");
+        }
+
+        function toggleHelp() {
+            document.getElementById("helpBox").classList.toggle("show");
+        }
+
+        function toggleAbout(){
+           document.getElementById("aboutus").classList.toggle("show");
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+</head>
+<body>
+    <div class="toggle-container">
+        <button class="toggle-button" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+
+    <div class="container">
+        <h2>Welcome To CyberShield AI !!!</h2>
+        <input type="text" id="inputText" placeholder="Enter Your Text Here">
+        <button onclick="checkText()">Check</button>
+        <p id="result"></p>
+        <button class="info-button" onclick="toggleInfo()">ℹ️ Why Cyberbullying Detection is Important?</button>
+        <button class="help-button" onclick="toggleHelp()">🆘 Need Help?</button>
+        <button class="aboutus-button" onclick="toggleAbout()">ℹ️ About Us</button>
+    </div>
+
+    <div id="infoBox" class="info-box">
+        <button class="close-info" onclick="toggleInfo()">✖ Close</button>
+        <h3>Why Cyberbullying Detection is Important? </h3>
+        <p>Cyberbullying detection is crucial because online harassment can cause severe emotional, psychological, and even physical harm to victims. It can lead to anxiety, depression, low self-esteem, and, in extreme cases, self-harm or suicide. Early detection helps prevent escalation by allowing timely intervention, fostering a safer digital environment. Additionally, it protects vulnerable groups, including children, teenagers, and the elderly, from long-term mental distress. Implementing AI-driven detection systems ensures that harmful content is flagged and addressed, promoting a more inclusive and respectful online space.</p>
+    </div>
+
+    <div id="helpBox" class="help-box">
+        <button class="close-help" onclick="toggleHelp()">✖ Close</button>
+        <h3>What to Do?</h3>
+        <p>Report abuse, block offenders, and seek support from <a href="#">helplines</a>.</p>
+    </div>
+    <div id="aboutus" class="about-us">
+        <button class="close-aboutus" onclick="toggleAbout()">✖ Close</button>
+        <h3>About Us</h3>
+        <p>Welcome to CyberShield AI, a cutting-edge web application designed to combat cyberbullying using deep learning. Developed as a final-year project by Priyanshu Banerjee, Kousik Bose, Pritam Das, Romit Roy and Rania Roy. CyberShield AI leverages advanced artificial intelligence to analyze text and determine whether it contains cyberbullying content.
+
+            Our system is powered by a newly built deep learning model, ensuring high accuracy in detecting harmful language and fostering a safer online environment. With a user-friendly interface, CyberShield AI empowers individuals, educators, and organizations to identify and address cyberbullying effectively.
+            
+            Join us in making the internet a safer space—one detection at a time! 🚀</p>
+    </div>
+</body>
+</html>
+
+
