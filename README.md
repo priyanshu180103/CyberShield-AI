@@ -27,7 +27,7 @@
   <ul>
     <li><a href="https://pandas.pydata.org/">pandas</a></li>
     <li><a href="https://matplotlib.org/">matplotlib</a></li>
-    <li><a href="https://numpy.org/"></a>numpy</li>
+    <li><a href="https://numpy.org/">numpy</a></li>
     <li><a href="https://www.tensorflow.org/">tensorflow</a></li>
     <li><a href="https://www.nltk.org/">NLTK</a></li>
   </ul>
