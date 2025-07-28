@@ -4,7 +4,7 @@
 
 # About the Project
 
-**CyberShield AI** is a cyberbullying detection web app that analyzes user-inputted text and instantly predicts whether it contains cyberbullying content. Built using a deep learning model **BiLSTM with Attention Layer**, the system provides accurate and real-time detection, helping users identify harmful interactions online. 
+In this project I have created a cyberbullying detection web app that analyses user-inputted text and instantly predicts whether it contains cyberbullying content. Built using a deep learning model **BiLSTM with Attention Layer**, the system provides accurate and real-time detection, helping users identify harmful interactions online. 
 
 ## Tech Stack 🍻
 <details>
