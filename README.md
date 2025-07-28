@@ -1,4 +1,4 @@
-# CyberShield-AI
+# Detection of Cyberbullying using Deep Learning
 
 <small align="justify">🚀 This Project has been done as the of Final Year Project of my B.tech Computer Science Engineering (2021-2025).</small>
 
