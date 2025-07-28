@@ -38,14 +38,16 @@ In this project I have created a cyberbullying detection web app that analyses u
 
 # Preview
 
-<img width="1082" height="905" alt="Screenshot 2025-04-28 191334" src="https://github.com/user-attachments/assets/8e355d94-ace3-406e-a16b-a79aa2a9e110" />
+<img width="950" height="800" alt="Screenshot 2025-04-28 191334" src="https://github.com/user-attachments/assets/8e355d94-ace3-406e-a16b-a79aa2a9e110" />
+
+<br>
+<br>
+<br>
 
 
 
 
 
 
-
-
-<img width="1160" height="911" alt="Screenshot 2025-04-28 190928" src="https://github.com/user-attachments/assets/ca985f46-8492-44f0-a9c9-b0dc7f6362b9" />
+<img width="950" height="800" alt="Screenshot 2025-04-28 190928" src="https://github.com/user-attachments/assets/ca985f46-8492-44f0-a9c9-b0dc7f6362b9" />
 
